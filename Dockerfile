@@ -1,6 +1,6 @@
 FROM node:4.2.1-onbuild
 
-VOLUME ["/usr/src/app/files", "/usr/src/app/database.db"]
+VOLUME ["/usr/src/app/files"]
 
 ENV NODE_ENV production
 ENV PORT 80
