@@ -1,4 +1,4 @@
-FROM node:4.2.1-onbuild
+FROM node:8-onbuild
 
 VOLUME ["/usr/src/app/files"]
 
