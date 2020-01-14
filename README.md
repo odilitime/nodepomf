@@ -10,6 +10,7 @@ Changelog:
 - update package.json to newer safer versions
 - clean up javascript/views to work with less configuration
 - update contact/source links
+- implement unit tests
 
 # Install
 For the purposes of this guide, we won't cover setting up Nginx, Node,
