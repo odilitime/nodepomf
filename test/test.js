@@ -29,6 +29,10 @@ describe('#files', async () => {
   it('make sure we have something to test', async () => {
     await ensurePomfServer()
   })
+  it('make sure database is ready', async () => {
+    const result = await fetch(config.URL)
+    const response = await result.text()
+  })
   let url
   const testData = '{ "this": "is a string of json" }'
   it('file upload', async () => {
@@ -64,16 +68,6 @@ response { success: true,
       // relative URL, so prepend base URL
       url = config.URL + url
     }
-    /*
-      url = res.response.data.url.replace('/', '')
-      const downloadRes = await platformApi.serverRequest(url, {
-        //noJson: true
-      })
-      // we don't need to assert this, we're not unit testing the pomf
-      if (downloadRes.statusCode !== 200) {
-        console.log('POMF download result code', downloadRes)
-      }
-    */
   })
   if (url) {
     it('file download', async() => {
