@@ -1,6 +1,16 @@
 # NodePomf
 NodeJS rewrite of [nokonoko/Pomf](https://github.com/nokonoko/Pomf/).
 
+## Odilitime updates
+Maxpowa, the original dev, hasn't update in a while.
+
+Changelog:
+- updated docker image to use node 12 (instead of 4.x)
+- use pug instead of jade (less security vulns)
+- update package.json to newer safer versions
+- clean up javascript/views to work with less configuration
+- update contact/source links
+
 # Install
 For the purposes of this guide, we won't cover setting up Nginx, Node,
 or NPM.  So we'll just assume you already have them all running well.
@@ -8,15 +18,16 @@ or NPM.  So we'll just assume you already have them all running well.
 ## Setting Up
 Assuming you already have Node and NPM working, setting up npomf is easy:
 ```
-$ git clone https://github.com/maxpowa/npomf.git  
-$ cd npomf  
-$ npm install  
+$ git clone https://github.com/odilitime/nodepomf.git
+$ cd nodepomf
+$ npm install
 ```
 That's it. You can now run the app with `npm start`
 
 ### Docker
 ```
-docker pull maxpowa/npomf
+docker build -t odilitime/nodepomf .
+docker run odilitime/nodepomf
 ```
 Start the container as you would normally.
 
@@ -26,9 +37,9 @@ of the application. Most config options should be self-explanatory or will have
 extensive documentation on them.
 
 ### Docker
-For configuring in docker, you can specify environment variables to overwrite 
+For configuring in docker, you can specify environment variables to overwrite
 the existing config by adding NPOMF_<CONFIG_VALUE> to your env. You can also
-create a volume over the config file with 
+create a volume over the config file with
 
 `-v <path/to/your/core.js>:/usr/src/app/config/core.js`
 
