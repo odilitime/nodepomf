@@ -69,15 +69,15 @@ response { success: true,
       url = config.URL + url
     }
   })
-  if (url) {
-    it('file download', async() => {
-      const result = await fetch(url)
-      const response = await result.text()
-      // response { "this": "is a string of json" }
-      //console.log('response', response)
-      assert.equal(testData, response)
-    })
-  } else {
-    console.warn('skipping download test because upload test failed')
-  }
+  it('file download', async() => {
+    if (!url) {
+      console.warn('skipping download test because upload test failed')
+      return
+    }
+    const result = await fetch(url)
+    const response = await result.text()
+    // response { "this": "is a string of json" }
+    //console.log('response', response)
+    assert.equal(testData, response)
+  })
 })
