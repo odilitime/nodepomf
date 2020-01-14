@@ -17,7 +17,8 @@ config.TAGLINE = "More kawaii than Pomf?!";
 
 // Main URL (User-facing)
 // config.URL = 'http://my.domain.is.moe';
-// Used to have trailing / but trailing / is no longer supported.
+// only needed for tools and github auth
+// No trailing slash!
 config.URL = 'http://localhost:3000';
 // URL to access uploaded files
 // Different from URL if you're serving uploaded files from a different subdomain
@@ -25,8 +26,8 @@ config.URL = 'http://localhost:3000';
 // to actually serve the files, NGINX or something must do that. This is just
 // for generating links to uploaded files.
 // config.FILE_URL = 'http://a.my.domain.is.moe';
-// Also used to have a trailing / but shouldn't any more!
-config.FILE_URL = 'http://localhost:3000/f';
+// No trailing slash!
+config.FILE_URL = '/f';
 
 // Only open to localhost, you can should put this behind nginx or similar
 // config.IFACES = '0.0.0.0'; // Open to all interfaces (Not running behind nginx)
@@ -37,9 +38,9 @@ config.PORT = '3000';
 
 // Contact name & email, for contact page
 config.CONTACTS = [
-	"<b>A Shit</b><br/>"+
-	"<a href='mailto:my.waifu@is.shit'>my.waifu@is.shit</a><br/>"+
-	"<a href='http://twitter.com/shit_waifu'>@shit_waifu</a>",
+	"<b>Now maintained by</b><br/>"+
+	"<!-- a href='mailto:@'>@</a><br/ -->"+
+	"<a href='http://twitter.com/odilitime'>@odilitime</a>",
 	""
 ];
 
@@ -114,7 +115,7 @@ config.SESSION_OPTIONS = {
 for (var attr in process.env) {
 	if (attr && attr.startsWith('NPOMF_')) {
 		eattr = attr.replace('NPOMF_', '');
-    
+
     var data = process.env[attr];
     // lets make it possible to use stuff like CONTACTS in docker environments.
     try {
