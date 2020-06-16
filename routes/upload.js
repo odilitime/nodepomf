@@ -8,7 +8,6 @@ var cors    = require('cors');
 var config  = require('../config/core');
 var util    = require('../util/core');
 
-var db = util.getDatabase();
 var router = express.Router();
 
 mkdirp(config.UPLOAD_DIRECTORY);
@@ -18,7 +17,7 @@ var storage = multer.diskStorage({
     cb(null, config.UPLOAD_DIRECTORY);
   },
   filename: function (req, file, cb) {
-    util.generate_name(file, db, function(name){
+    util.generate_name(file, function(name){
       cb(null, name);
     });
   }
@@ -76,7 +75,7 @@ router.options('/', cors());
 router.post('/', cors(), upload.array('files[]', config.MAX_UPLOAD_COUNT), function(req, res, next) {
   var files = [];
   req.files.forEach(function(file) {
-    db.run('UPDATE files SET size = ? WHERE filename = ?', [file.size, file.filename]);
+    util.setFileSize(file.filename, file.size)
     files.push({'name': file.originalname, 'url': config.FILE_URL + '/' + file.filename, 'size': file.size, 'hash': file.hash, 'mimetype': file.mimetype});
   });
 
