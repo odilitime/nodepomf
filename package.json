@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "loki-launcher": "^1.0.9",
-    "mocha": "^8.0.1",
+    "mocha": "^7.0.0",
     "node-fetch": "^2.6.0"
   }
 }
