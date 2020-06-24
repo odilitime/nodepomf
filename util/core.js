@@ -30,7 +30,7 @@ const fileModel = schema.define('files', {
 
 // create the tables if they don't exist
 schema.autoupdate(function() {
-  console.log('sqlite3 database is ready')
+  console.log('nodepomf: sqlite3 database is ready')
 })
 
 /*
