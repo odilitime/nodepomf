@@ -28,6 +28,11 @@ const fileModel = schema.define('files', {
     created:      { type: schema.Date,    default: Date.now },
 });
 
+// create the tables if they don't exist
+schema.autoupdate(function() {
+  console.log('sqlite3 database is ready')
+})
+
 /*
 var db = new sqlite3.Database(config.DB_FILENAME);
 db.exec('CREATE TABLE IF NOT EXISTS users (id integer primary key, provider text, username text, displayName text, profileUrl text, permissions text)');
@@ -92,6 +97,7 @@ function generate_name(file, cb) {
           if (err || fileCount === null || !fileCount) {
             // use it
             var now = Math.floor((new Date()).getTime()/1000);
+            if (file.size === undefined) file.size = 0
             fileModel.create({
               originalname: file.originalname,
               filename:     name,
