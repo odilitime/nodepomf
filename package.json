@@ -1,15 +1,13 @@
 {
-  "name": "not-pomf",
+  "name": "nodepomf",
   "version": "0.1.0",
   "description": "Not Pomf! A rewrite of the Pomf file host in NodeJS",
   "author": "Max Gurela <maxpowa@outlook.com>",
-  "private": true,
   "scripts": {
     "start": "node ./bin/www",
     "test": "mocha --exit"
   },
   "dependencies": {
-    "-": "0.0.1",
     "body-parser": "^1.15.2",
     "caminte": "^0.4.1",
     "cookie-parser": "^1.4.3",
@@ -18,7 +16,6 @@
     "debug": "^4.1.1",
     "express": "^4.14.0",
     "express-session": "^1.12.1",
-    "g": "^2.0.1",
     "mkdirp": "^0.5.1",
     "morgan": "^1.7.0",
     "multer": "^1.0.3",
