@@ -6,6 +6,11 @@ const crypto = require("crypto");
 const caminte = require('caminte');
 const Schema  = caminte.Schema;
 
+let needTables = false
+if (!fs.existsSync(config.DB_FILENAME)) {
+  needTables = true
+}
+
 // default driver
 const caminteConfig = {
   driver     : "sqlite3",
@@ -29,9 +34,12 @@ const fileModel = schema.define('files', {
 });
 
 // create the tables if they don't exist
-schema.autoupdate(function() {
-  console.log('nodepomf: sqlite3 database is ready')
-})
+if (needTables) {
+  console.log('nodepomf: database needs to be set up')
+  schema.autoupdate(function() {
+    console.log('nodepomf: sqlite3 database is set up')
+  })
+}
 
 /*
 var db = new sqlite3.Database(config.DB_FILENAME);
