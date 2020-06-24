@@ -7,6 +7,7 @@ Maxpowa, the original dev, hasn't update in a while.
 Changelog:
 - updated docker image to use node 12 (instead of 4.x)
 - use pug instead of jade (less security vulns)
+- use camintejs ORM instead of sqlite3 (still backwards compatible with sqlite3 but allows many more backends)
 - update package.json to newer safer versions
 - clean up javascript/views to work with less configuration
 - update contact/source links
