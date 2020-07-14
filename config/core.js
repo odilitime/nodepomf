@@ -111,6 +111,9 @@ config.SESSION_OPTIONS = {
 	domain: undefined // You should set this to your domain
 }
 
+config.QUIET = false;
+config.ROOT_SERVE_FILES = false;
+
 // Merge ENV in because we -hate- love RX14-chibi
 for (var attr in process.env) {
 	if (attr && attr.startsWith('NPOMF_')) {
