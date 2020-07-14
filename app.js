@@ -52,7 +52,9 @@ app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.png')));
-app.use(logger('dev'));
+if (!config.QUIET) {
+  app.use(logger('dev'));
+}
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -67,7 +69,13 @@ if (auth) {
   app.use(passport.session());
 }
 
-app.use(express.static(path.join(__dirname, 'public')));
+if (config.ROOT_SERVE_FILES) {
+  // mount files on /
+  app.use(express.static(path.join(__dirname, config.UPLOAD_DIRECTORY)));
+} else {
+  // mount homepage on /
+  app.use(express.static(path.join(__dirname, 'public')));
+}
 app.use('/f', express.static(path.join(__dirname, config.UPLOAD_DIRECTORY)));
 app.set('json spaces', 2);
 
